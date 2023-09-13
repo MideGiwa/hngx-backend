@@ -2,9 +2,7 @@ const express = require('express');
 const router = express.Router();
 const personController = require('../controllers/personControllers');
 
-router.get('/home', (req, res) => {
-    res.json({ message: 'Homepage' });
-});
+router.get('/', personController.getAllPersons);
 // Create Person...
 router.post('/', personController.createPerson);
 

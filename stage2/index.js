@@ -7,22 +7,13 @@ require("./config/database").connect();
 const router = require('./routes/personRoutes');
 
 const notFound = require("./middleware/notFound");
-const errorHandler = require("./middleware/errorHandler");
 
 app.use(cors());
 app.use(express.json());
+
 app.use("/api", router);
 
-app.get("/", (req, res) => {
-    const documentationLink = "<a href='/documentation'>Click here to view the documentation</a>";
-    const responseHTML = `<h1>Hngx Backend Stage 2 Task</h1><p>For more information, ${documentationLink}</p>`;
-    
-    return res.send(responseHTML);
-  });
-  
-
 app.use(notFound);
-app.use(errorHandler);
 
 const port = process.env.PORT || 5000;
 
